@@ -1,13 +1,19 @@
 const express = require('express');
-const userRouter = require('./routers/user');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const routes = require('./routers');
 require('dotenv').config();
 const port = process.env.PORT;
 require('./db/db');
 
 const app = express();
 
+// middlewares
 app.use(express.json());
-app.use(userRouter);
+app.use(morgan('dev'));
+app.use(helmet());
+
+app.use('/api/', routes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
