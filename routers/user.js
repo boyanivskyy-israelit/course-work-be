@@ -33,12 +33,12 @@ router.post('/auth/login', async (req, res) => {
   }
 });
 
-router.get('/auth/me', auth, async (req, res) => {
+router.get('/auth/profile', auth, async (req, res) => {
   // View logged in user profile
   res.send(req.user);
 });
 
-router.post('/auth/me/logout', auth, async (req, res) => {
+router.post('/auth/logout', auth, async (req, res) => {
   // Log user out of the application
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
@@ -51,7 +51,7 @@ router.post('/auth/me/logout', auth, async (req, res) => {
   }
 });
 
-router.post('/auth/me/logoutall', auth, async (req, res) => {
+router.post('/auth/logout-all', auth, async (req, res) => {
   // Log user out of all devices
   try {
     req.user.tokens.splice(0, req.user.tokens.length);
