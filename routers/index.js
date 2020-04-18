@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const authRoutes = require('./user');
+const authRoutes = require('./auth');
 const onboardingRoutes = require('./onboarding');
 
 router.use('/auth', authRoutes);
