@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+
 const authRoutes = require('./user');
+const onboardingRoutes = require('./onboarding');
 
 router.use('/auth', authRoutes);
+router.use('/onboarding', onboardingRoutes);
 router.all('*', (req, res) => {
   res
     .status(404)
